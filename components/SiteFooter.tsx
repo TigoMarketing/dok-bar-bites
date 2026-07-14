@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 export default function SiteFooter() {
   return (
     <footer
@@ -21,15 +23,12 @@ export default function SiteFooter() {
         <br />
         Geopend van woensdag t/m zondag vanaf 12:00 uur.
       </p>
-      <button
-        data-zc-action="open"
-        className="mx-auto mt-7 flex items-center gap-2 rounded-full bg-roze px-6 py-3 font-display text-sm font-semibold text-white"
+      <Link
+        href="/contact"
+        className="mx-auto mt-7 flex w-fit items-center gap-2 rounded-full bg-roze px-6 py-3 font-display text-sm font-semibold text-white"
       >
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white font-display text-xs font-bold text-roze">
-          Z
-        </span>
-        Claim jouw plekje op het terras
-      </button>
+        Neem contact op
+      </Link>
     </footer>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
@@ -8,7 +9,6 @@ const links = [
   { label: 'Funky Food', href: '/#kaarten' },
   { label: 'Great Drinks', href: '/#kaarten' },
   { label: 'Het Zusje', href: '/zusje' },
-  { label: 'Contact', href: '/#footer' },
 ];
 
 export default function Header() {
@@ -17,8 +17,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 bg-cream/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-12">
-        <Link href="/" className="font-display text-xl font-extrabold text-zwart">
-          DOK <span className="text-roze">Bar & Bites</span>
+        <Link href="/" className="shrink-0">
+          <Image
+            src="/Images/Logo_DOK_transparant.png"
+            alt="DOK Bar & Bites"
+            width={500}
+            height={500}
+            priority
+            className="h-10 w-10 md:h-12 md:w-12"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -31,15 +38,12 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <button
-            data-zc-action="open"
-            className="flex items-center gap-2 rounded-full bg-roze px-5 py-2.5 font-display text-sm font-semibold text-white"
+          <Link
+            href="/contact"
+            className="rounded-full bg-roze px-5 py-2.5 font-display text-sm font-semibold text-white"
           >
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white font-display text-xs font-bold text-roze">
-              Z
-            </span>
-            Reserveer
-          </button>
+            Contact
+          </Link>
         </nav>
 
         <button
@@ -63,16 +67,13 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <button
-            data-zc-action="open"
+          <Link
+            href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-3 flex items-center justify-center gap-2 rounded-full bg-roze px-5 py-3 font-display text-sm font-semibold text-white"
+            className="mt-3 flex items-center justify-center rounded-full bg-roze px-5 py-3 font-display text-sm font-semibold text-white"
           >
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white font-display text-xs font-bold text-roze">
-              Z
-            </span>
-            Reserveer een tafel
-          </button>
+            Contact
+          </Link>
         </nav>
       )}
     </header>

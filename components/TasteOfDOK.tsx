@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const cards = [
@@ -8,12 +9,15 @@ const cards = [
     subkop: 'Shared Dining & Lunch',
     body: "Van onze unieke 'KFC' (Korean Fried Chicken) en loaded nacho's tot vers gemaakte bruschetta. Perfect om te delen, of gewoon lekker voor jezelf te houden.",
     button: 'Bekijk de Foodkaart',
+    image: '/Images/Eten.jpg',
   },
   {
     kop: 'Great Drinks',
     subkop: 'Cocktails & Unieke Wijnen',
     body: 'Onze wijnkaart is met zorg samengesteld met kwaliteitswijnen die je nergens anders in Dordrecht op de kaart vindt. Daarnaast shaken we de lekkerste klassiekers en unieke gin-tonics.',
     button: 'Bekijk de Kaart',
+    image: '/Images/Drinken.jpg',
+    imagePosition: 'center 21%',
   },
 ];
 
@@ -30,8 +34,16 @@ export default function TasteOfDOK() {
             viewport={{ once: true }}
             className="overflow-hidden rounded-2xl bg-zwart text-cream"
           >
-            {/* TODO: vervang door echte detailfoto (wijnglas / bites-plank) */}
-            <div className="aspect-[4/3] bg-gradient-to-br from-[#8a6a4a] to-[#5c4530]" />
+            <div className="relative aspect-[4/3]">
+              <Image
+                src={card.image}
+                alt={card.kop}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+                style={{ objectPosition: card.imagePosition ?? 'center' }}
+              />
+            </div>
             <div className="p-8">
               <h3 className="font-brush text-3xl text-roze">{card.kop}</h3>
               <p className="mt-1 font-display text-xs font-bold uppercase tracking-widest text-beige">

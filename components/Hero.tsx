@@ -1,6 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Play } from 'lucide-react';
+import LiveStatusBadge from '@/components/LiveStatusBadge';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -9,12 +12,13 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-[#8a6a4a] to-[#3a2c1e]" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.2fr_0.8fr]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
+          <LiveStatusBadge />
           <span className="mb-3 block font-display text-xs font-bold uppercase tracking-widest text-cream">
             Jouw favoriete terras aan het water in Dordrecht
           </span>
@@ -28,15 +32,12 @@ export default function Hero() {
             altijd een vrije inloop vanaf 2 personen. Schuif gezellig aan!
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-4">
-            <button
-              data-zc-action="open"
+            <Link
+              href="/contact"
               className="flex items-center gap-2 rounded-full bg-roze px-6 py-3 font-display text-sm font-semibold text-white"
             >
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white font-display text-xs font-bold text-roze">
-                Z
-              </span>
-              Reserveer direct een tafel
-            </button>
+              Neem contact op
+            </Link>
             <a
               href="#kaarten"
               className="rounded-full border border-beige px-6 py-3 font-display text-sm font-semibold text-beige"
@@ -50,15 +51,16 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="rounded-2xl bg-cream/95 p-6 shadow-2xl md:justify-self-end"
+          className="relative mx-auto aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-3xl border-4 border-roze shadow-2xl md:justify-self-end"
         >
-          {/* TODO: vervang door echte Zenchef widget-embed zodra restaurant-ID bekend is */}
-          <p className="font-display text-sm font-bold text-zwart">
-            Zenchef reserveringswidget
-          </p>
-          <p className="mt-1 text-sm text-zwart/60">
-            (widget komt hier zodra restaurant-ID bekend is)
-          </p>
+          {/* TODO: vervang door echte sfeervideo (bijv. keuken/team/terras), autoplay muted loop, met poster-afbeelding als fallback */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#8a6a4a] to-[#3a2c1e]" />
+          <button
+            aria-label="Speel video af"
+            className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white text-white"
+          >
+            <Play size={24} fill="currentColor" />
+          </button>
         </motion.div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import Hero from '@/components/Hero';
 import TasteOfDOK from '@/components/TasteOfDOK';
-import FeelTheVibe from '@/components/FeelTheVibe';
+import MeetTheTeam from '@/components/MeetTheTeam';
 import VibeGallery from '@/components/VibeGallery';
 import SiteFooter from '@/components/SiteFooter';
 import FloatingReserve from '@/components/FloatingReserve';
@@ -10,7 +10,7 @@ export default function Home() {
     <main>
       <Hero />
       <TasteOfDOK />
-      <FeelTheVibe />
+      <MeetTheTeam />
       <VibeGallery />
       <SiteFooter />
       <FloatingReserve />
