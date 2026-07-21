@@ -1,33 +1,27 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Gift, KeyRound, GlassWater, Users2, PartyPopper } from 'lucide-react';
+import { Sparkles, KeyRound, GlassWater, PartyPopper } from 'lucide-react';
+import Link from 'next/link';
 
 const usps = [
   {
-    icon: Gift,
-    title: 'Gratis zaalhuur vanaf 30 personen',
-    body: 'Kom je met een groep van 30 personen of meer? Dan vervalt de zaalhuur (t.w.v. €350,- tot €400,-) volledig! Je betaalt alleen voor wat je eet en drinkt.',
-  },
-  {
     icon: KeyRound,
     title: 'Volledige exclusiviteit',
-    body: 'De ruimte is helemaal van jou. Dat betekent een eigen privébar, eigen muziekinstallatie, eigen toiletten én een eigen stuk terras aan het water. Geen pottenkijkers!',
+    body: 'Eigen privébar, eigen muziekinstallatie, eigen toiletten én een eigen stuk terras aan het water.',
+    accent: 'bg-blauw',
   },
   {
     icon: GlassWater,
-    title: 'Onbeperkt genieten vanaf €9,50 per uur',
-    body: 'Geen onverwachte kosten achteraf. Maak gebruik van ons drankenarrangement met onbeperkt bier, fris en wijn vanaf slechts €9,50 per persoon per uur!',
-  },
-  {
-    icon: Users2,
-    title: 'Capaciteit tot 50 personen',
-    body: 'Perfect ingericht voor groepen tot 50 personen (binnen). Bij mooi weer kunnen we dit in overleg uitbreiden tot grotere groepen met het terras erbij.',
+    title: 'Onbeperkt drinken, geen verrassingen',
+    body: 'Bier, fris en wijn onbeperkt vanaf €9 per persoon per uur — vooraf duidelijk, geen rekening achteraf die tegenvalt.',
+    accent: 'bg-gold',
   },
   {
     icon: PartyPopper,
     title: 'Aankleding op maat',
-    body: 'We werken samen met een professionele ballonnenpartner. Afhankelijk van jouw besteedbare budget, krijg je van ons een budget vrij om de ruimte nóg feestelijker aan te kleden met ballonnenbogen, fotobooths of teksten naar keuze!',
+    body: 'Ballonnenbogen, fotobooth of teksten naar keuze, samen met onze ballonnenpartner.',
+    accent: 'bg-blauw',
   },
 ];
 
@@ -40,7 +34,7 @@ export default function ZusjeUSPs() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="max-w-2xl"
+          className="text-center"
         >
           <h2 className="font-brush text-4xl text-roze md:text-5xl">
             Waarom vieren bij Het Zusje?
@@ -48,36 +42,70 @@ export default function ZusjeUSPs() {
           <p className="mt-2 font-display text-sm font-bold uppercase tracking-widest text-blauw">
             Alles tot in de puntjes geregeld
           </p>
-          <p className="mt-5 text-lg leading-relaxed">
-            Waar andere feestlocaties vaak kille, kale ruimtes zijn die je
-            zelf nog moet aankleden, is Het Zusje vanaf het eerste moment
-            sfeervol, warm en feestelijk ingericht.
-          </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {usps.map(({ icon: Icon, title, body }, i) => (
-            <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
-              viewport={{ once: true }}
-              className="flex gap-4 rounded-2xl bg-beige/40 p-6"
-            >
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blauw text-cream">
-                <Icon size={20} />
-              </div>
-              <div>
-                <h3 className="font-display text-base font-bold text-zwart">
-                  {title}
+        {/* Hoofd-differentiator, uitgelicht */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-12 flex flex-col items-center gap-6 rounded-3xl bg-roze p-8 text-center text-white shadow-lg md:flex-row md:items-center md:gap-8 md:p-10 md:text-left"
+        >
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white text-roze">
+            <Sparkles size={30} />
+          </div>
+          <div>
+            <span className="inline-block rounded-full bg-white/20 px-3 py-1 font-display text-xs font-bold uppercase tracking-widest">
+              Het verschil
+            </span>
+            <h3 className="mt-2 font-display text-2xl font-extrabold md:text-3xl">
+              Kant-en-klaar sfeervol, geen kale zaal
+            </h3>
+            <p className="mt-2 text-base leading-relaxed text-white/90">
+              Waar andere feestlocaties vaak kille, lege ruimtes zijn die je
+              zelf nog moet aankleden, is Het Zusje vanaf het eerste moment
+              warm, kleurrijk en feestelijk ingericht. Binnenlopen en klaar.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Overige USP's */}
+        <div className="mt-6 grid gap-5 md:grid-cols-3">
+          {usps.map((usp, i) => {
+            const Icon = usp.icon;
+            return (
+              <motion.div
+                key={usp.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                viewport={{ once: true }}
+                className="rounded-2xl bg-white p-6 shadow-md"
+              >
+                <div
+                  className={`flex h-11 w-11 items-center justify-center rounded-full text-white ${usp.accent}`}
+                >
+                  <Icon size={20} />
+                </div>
+                <h3 className="mt-4 font-display text-lg font-bold text-zwart">
+                  {usp.title}
                 </h3>
-                <p className="mt-1 text-sm leading-relaxed text-zwart/80">
-                  {body}
+                <p className="mt-2 text-sm leading-relaxed text-zwart/75">
+                  {usp.body}
                 </p>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Link
+            href="/contact"
+            className="inline-block rounded-full bg-roze px-8 py-3.5 font-display text-sm font-bold text-white"
+          >
+            Ontvang een voorstel op maat
+          </Link>
         </div>
       </div>
     </section>

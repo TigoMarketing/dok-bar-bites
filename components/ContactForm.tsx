@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 export default function ContactForm() {
-  const [subject, setSubject] = useState<'restaurant' | 'zusje'>('restaurant');
+  const [subject, setSubject] = useState<'restaurant' | 'zusje' | 'heel-dok'>('restaurant');
   const [submitted, setSubmitted] = useState(false);
 
   // TODO: koppel dit aan een echte backend/e-mailservice (bv. Resend, Formspree, of een eigen API-route)
@@ -51,6 +51,17 @@ export default function ContactForm() {
         >
           Het Zusje
         </button>
+        <button
+          type="button"
+          onClick={() => setSubject('heel-dok')}
+          className={`flex-1 rounded-full px-4 py-2.5 font-display text-sm font-semibold transition-colors ${
+            subject === 'heel-dok'
+              ? 'bg-roze text-white'
+              : 'bg-beige/50 text-zwart'
+          }`}
+        >
+          Heel DOK afhuren
+        </button>
       </div>
 
       <div>
@@ -88,7 +99,9 @@ export default function ContactForm() {
           placeholder={
             subject === 'zusje'
               ? 'Vertel ons over je feestje: datum, aantal personen, wensen...'
-              : 'Waar kunnen we je mee helpen?'
+              : subject === 'heel-dok'
+                ? 'Vertel ons over je event: datum, aantal personen, wensen...'
+                : 'Waar kunnen we je mee helpen?'
           }
         />
       </div>

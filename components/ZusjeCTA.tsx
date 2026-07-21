@@ -4,13 +4,19 @@ import { motion } from 'framer-motion';
 
 export default function ZusjeCTA() {
   return (
-    <section className="bg-roze px-6 py-20 text-center text-white md:px-12">
+    <section className="relative overflow-hidden bg-roze px-6 py-20 text-center text-white md:px-12">
+      <img
+        src="/Images/DOK_Blossom_2.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-8 -top-8 w-48 opacity-80 md:w-64"
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="mx-auto max-w-2xl"
+        className="relative mx-auto max-w-2xl"
       >
         <h2 className="font-brush text-4xl md:text-5xl">
           Let&apos;s Celebrate Together!
@@ -19,16 +25,18 @@ export default function ZusjeCTA() {
           Plan jouw ultieme feestje bij DOK
         </p>
         <p className="mt-6 text-lg leading-relaxed">
-          Of je nu een kleinschalige verjaardag viert of een grootschalig
-          bedrijfsuitje organiseert: wij ontzorgen je volledig zodat jij
-          alleen nog maar hoeft te genieten. Vul ons contactformulier in of
-          bel direct naar 078 843 21 52 om de mogelijkheden te bespreken. We
-          maken er samen iets onvergetelijks van!
+          Of het nu een intieme babyshower is of een bedrijfsfeest voor de
+          hele afdeling: wij ontzorgen je volledig zodat jij alleen nog
+          maar hoeft te genieten. Vul het formulier in en we nemen snel
+          contact op.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <button className="rounded-full bg-blauw px-8 py-3 font-display text-sm font-bold text-cream">
+          <a
+            href="/contact"
+            className="rounded-full bg-zwart px-8 py-3 font-display text-sm font-bold text-cream"
+          >
             Vraag nu een offerte aan
-          </button>
+          </a>
           <a
             href="tel:0788432152"
             className="rounded-full bg-white px-8 py-3 font-display text-sm font-bold text-roze"

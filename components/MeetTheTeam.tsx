@@ -1,16 +1,16 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-// TODO: vervang door echte teamleden (naam, functie, foto) zodra bekend
 const team = [
-  { name: 'Naam teamlid', role: 'Functie' },
-  { name: 'Naam teamlid', role: 'Functie' },
-  { name: 'Naam teamlid', role: 'Functie' },
-  { name: 'Naam teamlid', role: 'Functie' },
-  { name: 'Naam teamlid', role: 'Functie' },
+  { name: 'Joey', photo: '/Images/Joey.jpg' },
+  { name: 'Luuk', photo: '/Images/Luuk.jpg' },
+  { name: 'Victor', photo: '/Images/Victor.jpg' },
+  { name: 'Naam teamlid', photo: null },
+  { name: 'Naam teamlid', photo: null },
 ];
 
 export default function MeetTheTeam() {
@@ -18,13 +18,13 @@ export default function MeetTheTeam() {
 
   const scroll = (direction: 'left' | 'right') => {
     scrollRef.current?.scrollBy({
-      left: direction === 'left' ? -280 : 280,
+      left: direction === 'left' ? -360 : 360,
       behavior: 'smooth',
     });
   };
 
   return (
-    <section className="bg-blauw px-6 py-20 md:px-12">
+    <section id="team" className="bg-zwart px-6 py-20 md:px-12">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,23 +37,20 @@ export default function MeetTheTeam() {
             <h2 className="font-brush text-4xl text-beige md:text-5xl">
               Meet the Team
             </h2>
-            <p className="mt-2 font-display text-sm font-bold uppercase tracking-widest text-cream">
-              De gezichten achter DOK
-            </p>
           </div>
 
           <div className="hidden gap-2 md:flex">
             <button
               aria-label="Vorige"
               onClick={() => scroll('left')}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-cream/10 text-cream transition-colors hover:bg-roze"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-cream/10 text-cream transition-colors hover:bg-goud"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               aria-label="Volgende"
               onClick={() => scroll('right')}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-cream/10 text-cream transition-colors hover:bg-roze"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-cream/10 text-cream transition-colors hover:bg-goud"
             >
               <ChevronRight size={20} />
             </button>
@@ -62,7 +59,7 @@ export default function MeetTheTeam() {
 
         <div
           ref={scrollRef}
-          className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="mt-10 grid grid-cols-2 gap-4 md:flex md:snap-x md:snap-mandatory md:gap-5 md:overflow-x-auto md:pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {team.map((member, i) => (
             <motion.div
@@ -71,15 +68,24 @@ export default function MeetTheTeam() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               viewport={{ once: true }}
-              className="w-[240px] shrink-0 snap-start overflow-hidden rounded-2xl bg-cream"
+              className="overflow-hidden rounded-2xl bg-cream md:w-[340px] md:shrink-0 md:snap-start"
             >
-              {/* TODO: vervang door echte teamfoto */}
-              <div className="aspect-square bg-gradient-to-br from-[#8a6a4a] to-[#5c4530]" />
-              <div className="p-4">
-                <p className="font-display text-base font-bold text-zwart">
-                  {member.name}
-                </p>
-                <p className="text-sm text-zwart/70">{member.role}</p>
+              {member.photo ? (
+                <div className="relative aspect-square">
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    fill
+                    sizes="(min-width: 768px) 340px, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+              ) : (
+                // TODO: vervang door echte teamfoto
+                <div className="aspect-square bg-gradient-to-br from-gold to-espresso" />
+              )}
+              <div className="p-5">
+                <p className="font-brush text-3xl text-roze">{member.name}</p>
               </div>
             </motion.div>
           ))}

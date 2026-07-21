@@ -6,8 +6,13 @@
   --roze: #e20d71;
   --roze-dark: #b30a5a;
   --blauw: #105467;
-  --zwart: #000000;
+  --zwart: #010000;
+  --gold: #CAA573;
+  --sand: #bfa17b;
+  --olive: #79664b;
+  --espresso: #3f301d;
   --cream: #fbf3e6;
+  --goud: #d4af37;
 }
 
 @theme inline {
@@ -18,6 +23,11 @@
   --color-blauw: var(--blauw);
   --color-zwart: var(--zwart);
   --color-cream: var(--cream);
+  --color-goud: var(--goud);
+  --color-gold: var(--gold);
+  --color-sand: var(--sand);
+  --color-olive: var(--olive);
+  --color-espresso: var(--espresso);
 }
 
 body {
@@ -33,4 +43,17 @@ h1, h2, h3, .font-display {
 
 .font-brush {
   font-family: 'Permanent Marker', cursive;
+}
+
+/* Brand-switcher tokens (scoped to the header for now) — see BrandProvider.tsx */
+[data-brand='dok'] {
+  --color-primary: #e20d71;
+  --color-secondary: #f5f5dc;
+  --color-bg: #0a0a0a;
+}
+
+[data-brand='zusje'] {
+  --color-primary: #ff69b4;
+  --color-secondary: #ffffff;
+  --color-bg: #1a0d1a;
 }

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import LiveStatusBadge from '@/components/LiveStatusBadge';
@@ -7,10 +8,16 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-zwart px-6 pb-20 pt-16 md:px-12">
+    <section className="relative overflow-hidden bg-espresso px-6 pb-20 pt-16 md:px-12">
       {/* TODO: vervang door echte sfeervideo/slideshow van het terras (autoplay, muted, loop) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#8a6a4a] to-[#3a2c1e]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+      <Image
+        src="/Images/Header.jpg"
+        alt=""
+        fill
+        priority
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/65 to-black/50" />
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.2fr_0.8fr]">
         <motion.div
@@ -53,8 +60,13 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="relative mx-auto aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-3xl border-4 border-roze shadow-2xl md:justify-self-end"
         >
-          {/* TODO: vervang door echte sfeervideo (bijv. keuken/team/terras), autoplay muted loop, met poster-afbeelding als fallback */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#8a6a4a] to-[#3a2c1e]" />
+          {/* TODO: vervang door echte sfeervideo (bijv. keuken/team/terras), autoplay muted loop, met deze foto als poster-afbeelding */}
+          <Image
+            src="/Images/video-thumbnail.jpg.jpg"
+            alt=""
+            fill
+            className="object-cover"
+          />
           <button
             aria-label="Speel video af"
             className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white text-white"
